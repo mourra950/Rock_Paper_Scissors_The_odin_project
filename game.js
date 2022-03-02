@@ -2,47 +2,49 @@ function computerPlay() {
 
     let a = Math.floor(Math.random() * 3)
     if (a == 0) {
-        a = "rock";
+        a = "Rock";
     }
     else if (a == 1) {
-        a = "paper";
+        a = "Paper";
     }
     else {
-        a = "scissors";
+        a = "Scissors";
     }
     return a;
 }
 
-function game(playermove, computermove) {
-    playermove = "rock"
-    computermove = computerPlay()
-    console.log(playermove)
-    console.log(computermove)
-    if (playermove == computermove) {
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection == computerSelection) {
         return "tie";
     }
-    else if (playermove == "rock") {
-        if (computermove == "paper") {
-            return "lose"
+    else if (playerSelection == "Rock") {
+        if (computerSelection == "Paper") {
+            return "You Lose! Paper beats Rock"
         }
         else {
-            return "win"
+            return "You Win! Rock beats Scissors"
         }
     }
-    else if (playermove == "paper") {
-        if (computermove == "scissors") {
-            return "lose"
+    else if (playerSelection == "Paper") {
+        if (computerSelection == "Scissors") {
+            return "You Lose! Scissors beats Paper "
         }
         else {
-            return "win"
+            return "You Win! Paper beats Rock"
         }
     }
-    else if (playermove == "scissors") {
-        if (computermove == "rock") {
-            return "lose"
+    else if (playerSelection == "Scissors") {
+        if (computerSelection == "Rock") {
+            return "You Lose! Rock beats Scissors"
         }
         else {
-            return "win"
+            return "You Win! Scissors beats Paper"
         }
     }
+}
+function game() {
+    for (let i = 0; i < 5; i++) {
+        console.log(playRound(computerPlay(), computerPlay()))
+    }
+
 }
